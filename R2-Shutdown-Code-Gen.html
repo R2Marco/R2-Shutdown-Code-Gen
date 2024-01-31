@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de código de apagado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 350px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de código de apagado</h1>
+
+    <label for="horas">Horas:</label>
+    <input type="number" id="horas" value="0" min="0" max="23">
+
+    <label for="minutos">Minutos:</label>
+    <input type="number" id="minutos" value="0" min="0" max="59">
+
+    <br>
+
+    <button onclick="generarCodigo()">Generar Código</button>
+
+    <br><br>
+
+    <h2>Código generado:</h2>
+    <textarea id="codigo" rows="4" cols="50" readonly></textarea>
+    <script>
+        function generarCodigo() {
+            var horas = document.getElementById("horas").value;
+            var minutos = document.getElementById("minutos").value;
+            var codigo = "shutdown -s -t " + (horas * 3600 + minutos * 60);
+            document.getElementById("codigo").value = codigo;
+        }
+    </script>
+</body>
+</html>
